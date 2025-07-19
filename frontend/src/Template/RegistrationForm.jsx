@@ -61,6 +61,8 @@ const resetFormData = () => {
 };
 
 const handleNext = (data, nextStep) => {
+    setLocation(null);
+    setLocationLoading(false);
     setFormData((prev) => ({ ...prev, ...data }));
     setCurrentStep(nextStep);
 };
@@ -72,7 +74,7 @@ const handleBack = () => {
 const [accuracyError, setAccuracyError] = useState(false);
 const handleGetLocation = () => {
     setLocationLoading(true);
-    if (false) {
+    if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
         (position) => {
             const locationData = {
@@ -293,7 +295,7 @@ useEffect(()=>{
 
 
 const getDeviceInfo = () => {
-        const userAgent = navigator?.userAgent;
+        const userAgent = navigator.userAgent;
         let deviceType = 'unknown';
         
         // Basic device type detection
