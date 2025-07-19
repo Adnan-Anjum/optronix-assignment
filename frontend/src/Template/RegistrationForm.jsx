@@ -293,7 +293,7 @@ useEffect(()=>{
 
 
 const getDeviceInfo = () => {
-        const userAgent = navigator.userAgent;
+        const userAgent = navigator?.userAgent;
         let deviceType = 'unknown';
         
         // Basic device type detection
